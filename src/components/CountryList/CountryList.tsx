@@ -5,8 +5,7 @@ import './CountryList.css';
 const allCountriesInfo = 'https://restcountries.com/v3.1/all';
 
 interface Props {
-  name: string,
-  common: string
+  name: string
 }
 
 const CountryList: React.FC<Props> = () => {
@@ -14,17 +13,25 @@ const CountryList: React.FC<Props> = () => {
 
   useEffect(() => {
     const data = async () => {
-      const response = await axios.get(allCountriesInfo);
-      if (response.status >= 200 && response.status < 300) {
+      try {
+        const response = await axios.get(allCountriesInfo);
+        if (response.status >= 200 && response.status < 300) {
 
-        setCountries(response.data);
-      } else {
-        console.error('Error. Status: ', response.status);
+          setCountries(response.data);
+        } else {
+          console.error('Error. Status: ', response.status);
+        }
+      }catch (error) {
+        console.error('Error get list countries:', error);
       }
     };
 
     void data();
   }, []);
+
+  const clickShowDataCountry = () => {
+    console.log('click');
+  };
 
   return (
     <div className="countryList">
@@ -32,6 +39,7 @@ const CountryList: React.FC<Props> = () => {
       {countries.map((country) => (
         <div className="countryName"
              key={country.name.common}
+             onClick={() => clickShowDataCountry()}
         >
           {country.name.common}
         </div>
