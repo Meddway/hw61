@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Country} from '../../Country';
 import './CountryInfo.css';
+import CurrentCountryFlag from './CurrentCountryFlag';
 
 interface Props {
   country: Country | null;
@@ -35,14 +36,15 @@ const CountryInfo: React.FC<Props> = ({country}) => {
     return <h2 className="countryInfo">Выберите страну</h2>;
   }
 
-  console.log('Received country data:', country);
+  //console.log('Received country data:', country);
 
   return (
     <div className="countryInfo">
       <h2><strong>Страна: </strong>{country.name.common}</h2>
+      <CurrentCountryFlag country={country} />
       <p><strong>Столица: </strong>{country.capital}</p>
       <p><strong>Население: </strong>{country.population} человек</p>
-      <p><strong>Местная валюта:</strong></p>
+      {/*<p><strong>Местная валюта:</strong></p>*/}
       <p><strong>Регион: </strong>{country.region} </p>
       <div>
         <strong>Граничит с:</strong>
