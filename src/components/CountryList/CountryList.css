@@ -1,0 +1,12 @@
+.countryList {
+  flex: 1;
+  margin-right: 20px;
+  overflow: auto;
+  max-height: calc(100vh - 40px);
+}
+
+.countryName {
+  border: 1px solid black;
+  margin: 5px;
+  cursor: pointer;
+}
