@@ -1,5 +1,7 @@
 export interface Country {
-  name: string;
+  name: {
+    common: string;
+  };
   population?: number;
   capital?: string;
   currencies: { code: string; name: string }[];
